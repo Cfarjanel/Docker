@@ -1,0 +1,3 @@
+docker run -it --rm debian /bin/bash
+apt-get update && apt-get upgrade
+apt-get install && apt-get install git

@@ -1,0 +1,6 @@
+// --name [NAME] pour nommer l'host
+// -d [CONTAINER] pour lancer en arrière plan
+// --restart [no, on-failure, unless-stopped, always] pour le redémarrage auto
+// -p sortie:entrée pour rattacher les ports
+
+docker urn --name overlord -d -p 5000:80 --restart always nginx
