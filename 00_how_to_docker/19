@@ -1,0 +1,7 @@
+// A FINIR
+// dossier /root bindé à un dossier du HOME de votre host
+// pouvoir utiliser le microframework Flask dans sa dernière version
+// page html servie par flask renvoyant un "Hello World" dans des balises <h1>
+
+docker run -dt -v /home/Abathur:/root -w /root --name Abathur -p 3000:3000 python:2-slim
+docker exec Abathur pip install flask
