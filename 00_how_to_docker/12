@@ -1,4 +1,6 @@
-// créer un container mysql nommé spawning-pool et dont le mot de passe root est Kerrigan
-// le container crée une base de donnée nommée zerglings stockée dans le volume hatchery
-docker run -d --restart on-failure -v hatchery -e
-MYSQL_ROOT_PASSWORD=Kerrigan -e MYSQL_DATABASE=zerglings --name spawning-pool mysql
+// Lancer un container mysql en tâche de fond. Il devra aussi pouvoir redémarrer de lui-même en cas d’erreur et
+// faire en sorte que le mot de passe root de la base de données soit Kerrigan. Vous ferez aussi en sorte que la
+// base de données soit stockée dans le volume hatchery, que le container crée directement une base de données
+// qui aura comme nom zerglings et le container s’appellera spawning-pool.
+
+docker run -d --restart on-failure -v hatchery -e MYSQL_ROOT_PASSWORD=Kerrigan -e MYSQL_DATABASE=zerglings --name spawning-pool mysql

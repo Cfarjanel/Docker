@@ -1,1 +1,3 @@
+// Lister l’ensemble des services du swarm local.
+
 docker node ls
