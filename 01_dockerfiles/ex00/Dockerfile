@@ -1,4 +1,8 @@
+# Image used
 FROM alpine
-RUN apk update && apk upgrade
-RUN apk add vim
-ENTRYPOINT ["vim"]
+
+# Execute
+RUN apk update && apk upgrade && apk add vim
+
+# Command to execute from launching
+CMD vim
