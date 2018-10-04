@@ -15,7 +15,7 @@ ENV PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 WORKDIR $GOPATH/src/github.com/gogits
 
-#Dl gogs from dev branch
+#Dl gogs
 ONBUILD RUN git clone --depth=1 -b develop https://github.com/gogits/gogs
 ONBUILD RUN go get -u -tags "sqlite" github.com/gogits/gogs
 ONBUILD WORKDIR $GOPATH/src/github.com/gogits/gogs
