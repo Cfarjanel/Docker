@@ -1,15 +1,3 @@
-// Démarrer un container qui se nommera Abathur. Abathur sera un container Python
-// en version 2-slim, qui aura son dossier /root bindé à un dossier du HOME de votre
-// host, ainsi que le port 3000 bindé au port 3000 de votre machine virtuelle.
-// Vous personnaliserez ce container de telle sorte que vous puissiez utiliser le microframework
-// Flask dans sa dernière version. Vous devrez faire en sorte qu’une page
-// html renvoyant un "Hello World" dans des balises <h1>, soit servie par Flask.
-// Vous testerez la bonne mise en place de votre container, en accédant via curl ou
-// navigateur web,à l’adresse IP de votre machine virtuelle sur le port 3000.
-// Vous listerez aussi toutes les commandes nécessaires dans votre rendu.
-
-1) mkdir ~/abathur
-
-2) echo "from flask import Flask\napp = Flask(__name__)\n\n@app.route(\"/\")\ndef hello():\n    return \"<h1>Hello World</h1>\"" > ~/abathur/hello.py
-
-3) docker run -d --name Abathur -v ~/abathur:/root -p 3000:3000 python:2-slim sh -c "pip install Flask && FLASK_APP=/root/hello.py flask run -h 0.0.0.0 -p 3000"
+mkdir ~/abathur
+echo "from flask import Flask\napp = Flask(__name__)\n\n@app.route(\"/\")\ndef hello():\n    return \"<h1>Hello World</h1>\"" > ~/abathur/hello.py
+docker run -d --name Abathur -v ~/abathur:/root -p 3000:3000 python:2-slim sh -c "pip install Flask && FLASK_APP=/root/hello.py flask run -h 0.0.0.0 -p 3000"
