@@ -1,3 +1,5 @@
+# faire une appli en ruby qui sera accessible sur le port 3000 de char
+
 FROM ruby
 
 RUN apt-get update && apt-get install && gem install rails && \
@@ -17,4 +19,4 @@ EXPOSE 3000
 ONBUILD RUN rails db:migrate
 ONBUILD RUN rails db:seed
 
-CMD rails s -b 0.0.0.0
+CMD rails s -b 0.0.0.0 3000
