@@ -1,22 +1,27 @@
-# faire une appli en ruby qui sera accessible sur le port 3000 de char
+# docker build -t ft-rails:on-build .
+# docker run -d -p 80:3000 --name ex02 --restart=always railsapp
+# docker rm -f ex02 && docker rmi ft-rails:on-build && docker rmi railsapp
 
-FROM ruby
+FROM ruby:2.4
 
-RUN apt-get update && apt-get install && gem install rails && \
-apt-get install nodejs -y && apt-get install -y build-essential libpq-dev
+RUN apt-get update && apt-get install -y sqlite3 \
+nodejs \
+git \
+build-essential \
+libpq-dev \
+postgresql-client \
+postgresql \
+libxslt1-dev \
+libqt4-dev \
+xvfb \
+redis-server
 
-# ONBUILD : executed after the use of the image
-ONBUILD COPY . /opt/app
-ONBUILD WORKDIR /opt/app
+RUN mkdir -p /opt/app
+WORKDIR /opt/app
 
-# Install gems files and rails
-ONBUILD RUN bundle install
-ONBUILD RUN gem install rails
+COPY Gemfile* /opt/app
+RUN bundle install
 
-EXPOSE 3000
+COPY . .
 
-# Migrate and seed population db
-ONBUILD RUN rails db:migrate
-ONBUILD RUN rails db:seed
-
-CMD rails s -b 0.0.0.0 3000
+RUN rails new /opt/app

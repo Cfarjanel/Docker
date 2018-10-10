@@ -1,3 +1,5 @@
+# docker run -it --rm -p 80:80 -p 21:22 --privileged gitlab
+
 FROM debian
 
 RUN apt-get update -y && apt-get upgrade -y && \
